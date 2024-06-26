@@ -26,3 +26,24 @@ def get_followees_list(username,password):
     print(f"you follow {followees_count} accounts")
     return followees_list
 
+choice = int(input("\n press 1 to see the accounts that you follow which dont follow you \n press 2 to see the accounts that follows you but you dont follow them"))
+
+if choice == 1:
+    final_list = []
+    for i in get_followees_list(username,password):
+        if i not in get_followers_list(username,password):
+            final_list.append(i)
+    for i in final_list:
+        print(i)
+    print(f"{len(final_list)} accounts in total")
+
+if choice == 2:
+    final_list = []
+    for i in get_followers_list(username,password):
+        if i not in get_followees_list(username,password):
+            final_list.append(i)
+    for i in final_list:
+        print(i)
+    print(f"{len(final_list)} accounts in total")
+
+
